@@ -42,7 +42,7 @@ export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className="row banner">
+        <div className="row row-banner">
           <div className="col">
             <img
               className="banner"
