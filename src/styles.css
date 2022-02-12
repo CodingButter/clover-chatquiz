@@ -1,4 +1,15 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  padding: 10px;
+}
+.add-question-row {
+  margin-bottom: 1rem;
+}
+.align-right {
+  text-align: right;
+}
+.header {
+  background-color: #007bff;
+  color: white;
 }
