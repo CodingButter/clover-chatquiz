@@ -96,7 +96,7 @@ export default function App() {
                           className="btn-primary btn"
                           disabled={question.active === 1 || winner}
                         >
-                          Activate
+                          {winner ? "WON" : "Activate"}
                         </button>
                       </div>
                     </div>
