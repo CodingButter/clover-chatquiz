@@ -1,10 +1,29 @@
 import "./styles.css";
 import { read, update, create } from "./services/api";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import banner from "./banner.jpg";
 export default function App() {
+  const reduceRevieled = (currentState, { action, id }) => {
+    switch (action) {
+      case "show":
+        currentState[id] = true;
+        break;
+      case "hide":
+        currentState[id] = false;
+        break;
+      default:
+    }
+    return currentState;
+  };
+
   const [questions, setQuestions] = useState([]);
   const [winners, setWinners] = useState([]);
+  const [revieled, dispatchRevield] = useReducer(reduceRevieled, {});
+
+  const toggleHidden = (id) => {
+    if (revieled[id]) dispatchRevield({ action: "hide", id });
+    else dispatchRevield({ action: "show", id });
+  };
 
   const setActiveQuestion = async (id) => {
     await update("activechatquestion", { id });
@@ -86,7 +105,14 @@ export default function App() {
                   <li className="container list-group-item" key={question.id}>
                     <div className="row">
                       <div className="col quesion">{question.question}</div>
-                      <div className="col answer">{question.answer}</div>
+                      <div
+                        onClick={() => toggleHidden(question.id)}
+                        className="col answer list-answer"
+                      >
+                        {revieled[question.id] || winner
+                          ? question.answer
+                          : "Click To Show/Hide"}
+                      </div>
                       <div className="col winner">
                         {(winner && winner.username) || "No Winner"}
                       </div>

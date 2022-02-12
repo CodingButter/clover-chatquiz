@@ -19,3 +19,6 @@
 .row-banner {
   text-align: center;
 }
+.list-answer {
+  cursor: pointer;
+}
