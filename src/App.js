@@ -51,6 +51,7 @@ export default function App() {
     const resp = await read("chatquestions");
     setQuestions(resp);
   };
+
   useEffect(() => {
     getQuestions();
     const winIntval = setInterval(getWinners, 1000);
