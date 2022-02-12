@@ -32,6 +32,7 @@ export default function App() {
 
   const addQuestion = async () => {
     const question = prompt("New Question");
+    if (!question) return;
     let answers = prompt(`answer to "${question}"`);
     if (!question || !answers) return;
     answers = answers
