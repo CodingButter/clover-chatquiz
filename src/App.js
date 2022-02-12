@@ -13,7 +13,9 @@ export default function App() {
 
   const addQuestion = async () => {
     const question = prompt("New Question");
-    const answers = prompt(`answer to "${question}"`)
+    let answers = prompt(`answer to "${question}"`);
+    if (!question || !answers) return;
+    answers = answers
       .split(",")
       .map((answer) => answer.trim().toLowerCase())
       .join(",");
@@ -39,9 +41,17 @@ export default function App() {
 
   return (
     <div className="App">
-      <img src={banner} alt="clover competitions banner" />
-      <h1>Chat Quesitons</h1>
       <div className="container">
+        <div className="row banner">
+          <div className="col">
+            <img src={banner} alt="clover competitions banner" />
+          </div>
+        </div>
+        <div className="row main-header">
+          <div className="col">
+            <h1>Chat Quesitons</h1>
+          </div>
+        </div>
         <div className="row add-question-row">
           <div className="col-10"></div>
           <div className="col-2">
