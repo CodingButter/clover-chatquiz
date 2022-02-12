@@ -44,7 +44,11 @@ export default function App() {
       <div className="container">
         <div className="row banner">
           <div className="col">
-            <img src={banner} alt="clover competitions banner" />
+            <img
+              className="banner"
+              src={banner}
+              alt="clover competitions banner"
+            />
           </div>
         </div>
         <div className="row main-header">
