@@ -1,6 +1,7 @@
 import "./styles.css";
 import { read, update, create } from "./services/api";
 import { useEffect, useState } from "react";
+import banner from "./banner.jpg";
 export default function App() {
   const [questions, setQuestions] = useState([]);
   const [winners, setWinners] = useState([]);
@@ -38,6 +39,7 @@ export default function App() {
 
   return (
     <div className="App">
+      <img src={banner} alt="clover competitions banner" />
       <h1>Chat Quesitons</h1>
       <div className="container">
         <div className="row add-question-row">
