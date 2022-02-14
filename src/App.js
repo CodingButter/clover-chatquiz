@@ -1,5 +1,5 @@
 import "./styles.css";
-import { read, update, create } from "./services/api";
+import { read, update, create, deletes } from "./services/api";
 import { useEffect, useReducer, useState } from "react";
 import banner from "./banner.jpg";
 export default function App() {
@@ -27,6 +27,11 @@ export default function App() {
 
   const setActiveQuestion = async (id) => {
     await update("activechatquestion", { id });
+    await getQuestions();
+  };
+
+  const deleteQuestion = async (id) => {
+    await deletes("deletechatquestion", { id });
     await getQuestions();
   };
 
@@ -97,6 +102,7 @@ export default function App() {
                   <div className="col answer">Answer</div>
                   <div className="col winner">Winner</div>
                   <div className="col activeBtn">Activate</div>
+                  <div className="col deleteBtn">Delete</div>
                 </div>
               </li>
               {questions.map((question, index) => {
@@ -125,6 +131,14 @@ export default function App() {
                           disabled={question.active === 1 || winner}
                         >
                           {winner ? "WON" : "Activate"}
+                        </button>
+                      </div>
+                      <div className="col delete">
+                        <button
+                          onClick={() => deleteQuestion(question.id)}
+                          className="btn-primary btn"
+                        >
+                          X
                         </button>
                       </div>
                     </div>

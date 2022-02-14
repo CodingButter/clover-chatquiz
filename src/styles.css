@@ -22,3 +22,6 @@
 .list-answer {
   cursor: pointer;
 }
+.delete {
+  padding: 3px 8px;
+}

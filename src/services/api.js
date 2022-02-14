@@ -22,5 +22,8 @@ const read = async (does, payload) => {
 const update = async (does, payload) => {
   return await call("update", does, payload);
 };
+const deletes = async (does, payload) => {
+  return await call("delete", does, payload);
+};
 
-export { create, read, update };
+export { create, read, update, deletes };
